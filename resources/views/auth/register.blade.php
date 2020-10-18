@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-0 form-group row">
+                        <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
@@ -82,7 +82,7 @@
                 <div class="registration_page center_container">
                     <div class="center_content">
                         <div class="logo">
-                            <img src="{{asset('panel/assets/images/logo.png')}}" alt="" class="img-fluid">
+                            <img src="{{asset('public/panel/assets/images/logo.png')}}" alt="" class="img-fluid">
                         </div>
                         <form action="{{route('register')}}" method="post">
                             @csrf
