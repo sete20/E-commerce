@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -31,10 +31,10 @@
     <title>Ecommerce Site Admin Panel </title>
 
     <!-- vendor css -->
-    <link href="{{ asset('backend/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
 
  <!-- Tags Input CDN CSS -->
 <link href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet"/>
@@ -43,22 +43,22 @@
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
 <!-- Datatable css -->
-    <link href="{{ asset('backend/lib/highlightjs/github.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/lib/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/highlightjs/github.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('/backend/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/css/starlight.css') }}">
-   <link href="{{ asset('backend/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/backend/css/starlight.css') }}">
+   <link href="{{ asset('/backend/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
 
   </head>
 
   <body>
 
-     @guest
+     @auth('web')
 
 
-     @else
+     @elseauth('admin')
     <!-- ########## START: LEFT PANEL ########## -->
     <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> easylearning</a></div>
     <div class="sl-sideleft">
@@ -74,7 +74,6 @@
         </a><!-- sl-menu-link -->
 
 
-
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -83,13 +82,11 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Category</a></li>
-          <li class="nav-item"><a href="" class="nav-link">Sub Category</a></li>
-          <li class="nav-item"><a href="" class="nav-link">Brand</a></li>
+          <li class="nav-item"><a href=" class="nav-link">Category</a></li>
+          <li class="nav-item"><a href=" " class="nav-link">Sub Category</a></li>
+          <li class="nav-item"><a h" class="nav-link">Brand</a></li>
 
         </ul>
-
-
 
 
 
@@ -102,7 +99,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Coupon</a></li>
+          <li class="nav-item"><a href="{" class="nav-link">Coupon</a></li>
 
         </ul>
 
@@ -120,7 +117,6 @@
         </ul>
 
 
-
    <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
@@ -129,9 +125,9 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">New Order</a></li>
+          <li class="nav-item"><a href=""" class="nav-link">New Order</a></li>
           <li class="nav-item"><a href="" class="nav-link">Accept Payment </a></li>
-           <li class="nav-item"><a href=""class="nav-link">Cancel Order </a></li>
+           <li class="nav-item"><a href="" class="nav-link">Cancel Order </a></li>
           <li class="nav-item"><a href="" class="nav-link">Process Delivery </a></li>
           <li class="nav-item"><a href="" class="nav-link">Delivery Success </a></li>
         </ul>
@@ -155,7 +151,6 @@
         </ul>
 
 
-
 <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
@@ -165,10 +160,9 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="" class="nav-link">Newslaters</a></li>
-           <li class="nav-item"><a href="" class="nav-link">SEO Setting </a></li>
+           <li class="nav-item"><a href=" class="nav-link">SEO Setting </a></li>
 
         </ul>
-
 
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -246,7 +240,6 @@
         </ul>
 
 
-
     <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
@@ -259,7 +252,6 @@
            <li class="nav-item"><a href=" " class="nav-link">All Comments </a></li>
 
         </ul>
-
 
           <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -293,8 +285,8 @@
         <nav class="nav">
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-              <span class="logged-name"> </span>
-              <img src="{{ asset('backend/img/img3.jpg') }} " class="wd-32 rounded-circle" alt="">
+              <span class="logged-name"> {{ Auth::guard('admin')->user()->name }} </span>
+              <img src="{{ asset('/backend/img/img3.jpg') }} " class="wd-32 rounded-circle" alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
@@ -475,22 +467,22 @@
     </div><!-- sl-sideright -->
     <!-- ########## END: RIGHT PANEL ########## --->
 
-     @endguest
+     @endauth
 
      @yield('admin_content')
 
 
-    <script src="{{ asset('backend/lib/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('backend/lib/popper.js/popper.js') }}"></script>
-    <script src="{{ asset('backend/lib/bootstrap/bootstrap.js') }}"></script>
-    <script src="{{ asset('backend/lib/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('backend/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
+    <script src="{{ asset('/backend/lib/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('/backend/lib/popper.js/popper.js') }}"></script>
+    <script src="{{ asset('/backend/lib/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ asset('/backend/lib/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ asset('/backend/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
 
 
-    <script src="{{ asset('backend/lib/highlightjs/highlight.pack.js') }}"></script>
-    <script src="{{ asset('backend/lib/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('backend/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
-    <script src="{{ asset('backend/lib/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/backend/lib/highlightjs/highlight.pack.js') }}"></script>
+    <script src="{{ asset('/backend/lib/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('/backend/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('/backend/lib/select2/js/select2.min.js') }}"></script>
 
 <script>
       $(function(){
@@ -519,18 +511,18 @@
 
 
 
-    <script src="{{ asset('backend/lib/jquery.sparkline.bower/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('backend/lib/d3/d3.js') }}"></script>
-    <script src="{{ asset('backend/lib/rickshaw/rickshaw.min.js') }}"></script>
-    <script src="{{ asset('backend/lib/chart.js/Chart.js') }}"></script>
-    <script src="{{ asset('backend/lib/Flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('backend/lib/Flot/jquery.flot.pie.js') }}"></script>
-    <script src="{{ asset('backend/lib/Flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ asset('backend/lib/flot-spline/jquery.flot.spline.js') }}"></script>
+    <script src="{{ asset('/backend/lib/jquery.sparkline.bower/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('/backend/lib/d3/d3.js') }}"></script>
+    <script src="{{ asset('/backend/lib/rickshaw/rickshaw.min.js') }}"></script>
+    <script src="{{ asset('/backend/lib/chart.js/Chart.js') }}"></script>
+    <script src="{{ asset('/backend/lib/Flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('/backend/lib/Flot/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset('/backend/lib/Flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('/backend/lib/flot-spline/jquery.flot.spline.js') }}"></script>
 
 
-     <script src="{{ asset('backend/lib/medium-editor/medium-editor.js') }}"></script>
-     <script src="{{ asset('backend/lib/summernote/summernote-bs4.min.js') }}"></script>
+     <script src="{{ asset('/backend/lib/medium-editor/medium-editor.js') }}"></script>
+     <script src="{{ asset('/backend/lib/summernote/summernote-bs4.min.js') }}"></script>
 
     <script>
       $(function(){
@@ -563,9 +555,9 @@
     </script>
 
 
-    <script src="{{ asset('backend/js/starlight.js') }}"></script>
-    <script src="{{ asset('backend/js/ResizeSensor.js') }}"></script>
-    <script src="{{ asset('backend/js/dashboard.js') }}"></script>
+    <script src="{{ asset('/backend/js/starlight.js') }}"></script>
+    <script src="{{ asset('/backend/js/ResizeSensor.js') }}"></script>
+    <script src="{{ asset('/backend/js/dashboard.js') }}"></script>
 
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 

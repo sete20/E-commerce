@@ -33,10 +33,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    //  public function __construct()
-    // {
-    //     $this->middleware('guest:admin')->except('logout');
-    // }
+     public function __construct()
+    {
+        $this->middleware('guest:admin')->except('logout');
+    }
 
     public function showLoginForm()
     {
@@ -44,12 +44,13 @@ class LoginController extends Controller
              return redirect()->back();
          }else{
             return view('admin.auth.login');
+            // return view('');
          }
 
     }
 
-    // protected function guard()
-    // {
-    //     return Auth::guard('admin');
-    // }
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
 }

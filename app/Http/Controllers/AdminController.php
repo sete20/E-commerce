@@ -13,14 +13,19 @@ class AdminController extends Controller
      *
      * @return void
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Admin $admin)
     {
+
         return view('admin.home');
     }
 
@@ -32,30 +37,30 @@ class AdminController extends Controller
     public function Update_pass(Request $request)
     {
       $password=Auth::user()->password;
-      $oldPass=$request->oldPass;
-      $newPass=$request->password;
+      $oldpass=$request->oldpass;
+      $newpass=$request->password;
       $confirm=$request->password_confirmation;
-      if (Hash::check($oldPass,$password)) {
-           if ($newPass === $confirm) {
+      if (Hash::check($oldpass,$password)) {
+           if ($newpass === $confirm) {
                       $user=Admin::find(Auth::id());
                       $user->password=Hash::make($request->password);
                       $user->save();
-                      Auth::logout();
+                      Auth::logout();  
                       $notification=array(
-                        'message'=>'Password Changed Successfully ! Now Login with Your New Password',
+                        'messege'=>'Password Changed Successfully ! Now Login with Your New Password',
                         'alert-type'=>'success'
                          );
-                       return Redirect()->route('admin.login')->with($notification);
+                       return Redirect()->route('admin.login')->with($notification); 
                  }else{
                      $notification=array(
-                        'message'=>'New password and Confirm Password not matched!',
+                        'messege'=>'New password and Confirm Password not matched!',
                         'alert-type'=>'error'
                          );
                        return Redirect()->back()->with($notification);
-                 }
+                 }     
       }else{
         $notification=array(
-                'message'=>'Old Password not matched!',
+                'messege'=>'Old Password not matched!',
                 'alert-type'=>'error'
                  );
                return Redirect()->back()->with($notification);
@@ -66,7 +71,7 @@ class AdminController extends Controller
     {
         Auth::logout();
             $notification=array(
-                'message'=>'Successfully Logout',
+                'messege'=>'Successfully Logout',
                 'alert-type'=>'success'
                  );
              return Redirect()->route('admin.login')->with($notification);
