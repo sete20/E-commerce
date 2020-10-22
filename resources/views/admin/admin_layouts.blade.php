@@ -74,6 +74,7 @@
         </a><!-- sl-menu-link -->
 
 
+
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -82,11 +83,13 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href=" class="nav-link">Category</a></li>
-          <li class="nav-item"><a href=" " class="nav-link">Sub Category</a></li>
-          <li class="nav-item"><a h" class="nav-link">Brand</a></li>
+          <li class="nav-item"><a href="{{ route('categories') }}" class="nav-link">Category</a></li>
+          <li class="nav-item"><a href="{{ route('sub.categories') }}" class="nav-link">Sub Category</a></li>
+          <li class="nav-item"><a href="{{ route('brands') }}" class="nav-link">Brand</a></li>
 
         </ul>
+
+
 
 
 
@@ -99,9 +102,10 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{" class="nav-link">Coupon</a></li>
+          <li class="nav-item"><a href="{{ route('admin.coupon') }}" class="nav-link">Coupon</a></li>
 
         </ul>
+
 
 
         <a href="#" class="sl-menu-link">

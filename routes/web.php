@@ -33,3 +33,36 @@ Route::post('admin/update/reset', 'Admin\ResetPasswordController@reset')->name('
 Route::get('/admin/Change/Password','AdminController@ChangePassword')->name('admin.password.change');
 Route::post('/admin/password/update','AdminController@Update_pass')->name('admin.password.update');
 Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
+    /// Admin Section
+// categories
+Route::get('admin/categories', 'Admin\Category\CategoryController@category')->name('categories');
+Route::post('admin/store/category', 'Admin\Category\CategoryController@storeCategory')->name('store.category');
+Route::get('delete/category/{id}', 'Admin\Category\CategoryController@DeleteCategory');
+Route::get('edit/category/{id}', 'Admin\Category\CategoryController@editCategory');
+Route::post('update/category/{id}', 'Admin\Category\CategoryController@updateCategory');
+
+/// Brand
+Route::get('admin/brands', 'Admin\Category\BrandController@brand')->name('brands');
+Route::post('admin/store/brand', 'Admin\Category\BrandController@storeBrand')->name('store.brand');
+Route::get('delete/brand/{id}', 'Admin\Category\BrandController@deleteBrand');
+Route::get('edit/brand/{id}', 'Admin\Category\BrandController@editBrand');
+Route::post('update/brand/{id}', 'Admin\Category\BrandController@updateBrand');
+
+// Sub Categories
+Route::get('admin/subcategory', 'Admin\Category\SubCategoryController@subcategory')->name('sub.categories');
+Route::post('admin/store/subcategory', 'Admin\Category\SubCategoryController@storeSubcategory')->name('store.subcategory');
+Route::get('edit/subcategory/{id}', 'Admin\Category\SubCategoryController@editSubcategory');
+Route::post('update/subcategory/{id}', 'Admin\Category\SubCategoryController@updateSubcategory');
+Route::get('delete/subcategory/{id}', 'Admin\Category\SubCategoryController@deleteSubcategory');
+
+// Coupons All
+Route::get('admin/sub/coupon', 'Admin\Category\CouponController@Coupon')->name('admin.coupon');
+Route::post('admin/store/coupon', 'Admin\Category\CouponController@StoreCoupon')->name('store.coupon');
+Route::get('delete/coupon/{id}', 'Admin\Category\CouponController@DeleteCoupon');
+Route::get('edit/coupon/{id}', 'Admin\Category\CouponController@EditCoupon');
+Route::post('update/coupon/{id}', 'Admin\Category\CouponController@UpdateCoupon');
+
+// Newslater
+
+Route::get('admin/newslater', 'Admin\Category\CouponController@Newslater')->name('admin.newslater');
+Route::get('delete/sub/{id}', 'Admin\Category\CouponController@DeleteSub');
