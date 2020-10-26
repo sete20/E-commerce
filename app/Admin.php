@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Notifications\AdminPasswordResetNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,6 +15,10 @@ class Admin extends Authenticatable
         protected $guard = 'admin';
 
 
+        public function sendPasswordResetNotification($token)
+	    {
+	        $this->notify(new AdminPasswordResetNotification($token));
+	    }
 
         protected $fillable = [
             'name', 'email', 'password','phone'

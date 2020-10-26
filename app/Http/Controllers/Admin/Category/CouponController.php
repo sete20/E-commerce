@@ -55,13 +55,13 @@ class CouponController extends Controller
               return Redirect()->back()->with($notification);
     }
     public function Newslater(){
-        $sub = DB::table('newslaters')->get();
+        $sub = DB::table('Newsletters')->get();
         return view('admin.coupon.newslater',compact('sub'));
     }
 
 
      public function DeleteSub($id){
-       DB::table('newslaters')->where('id',$id)->delete();
+       DB::table('Newsletters')->where('id',$id)->delete();
        $notification=array(
                'messege'=>'Subscriber Deleted Successfully',
                'alert-type'=>'success'

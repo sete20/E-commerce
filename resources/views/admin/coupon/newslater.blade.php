@@ -3,19 +3,19 @@
 @section('admin_content')
 
  <div class="sl-mainpanel">
-     
+
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
           <h5>Subscriber List</h5>
-         
+
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Subscriber List
   <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">All Delete</a>
           </h6>
-           
+
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
@@ -25,7 +25,7 @@
                   <th class="wd-15p">Email</th>
                   <th class="wd-15p">Subscribiing Time</th>
                   <th class="wd-20p">Action</th>
-                  
+
                 </tr>
               </thead>
               <tbody>
@@ -35,21 +35,21 @@
                   <td>{{ $row->email }}</td>
                   <td>{{ \Carbon\Carbon::parse($row->created_at)->diffForhumans()  }}</td>
                   <td>
-                     
+
                     <a href="{{ URL::to('delete/sub/'.$row->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                   </td>
-                   
+
                 </tr>
                 @endforeach
-                 
+
               </tbody>
             </table>
           </div><!-- table-wrapper -->
         </div><!-- card -->
 
-        
 
- 
+
+
     </div><!-- sl-mainpanel -->
 
 
@@ -64,7 +64,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-             
+
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -76,13 +76,13 @@
       @endif
        <form method="post" action="{{ route('store.category') }}">
         @csrf
-         <div class="modal-body pd-20"> 
+         <div class="modal-body pd-20">
         <div class="form-group">
           <label for="exampleInputEmail1">Category Name</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category" name="category_name">
-          
+
         </div>
-          
+
               </div><!-- modal-body -->
               <div class="modal-footer">
                 <button type="submit" class="btn btn-info pd-x-20">Sumbit</button>
@@ -93,6 +93,6 @@
           </div><!-- modal-dialog -->
         </div><!-- modal -->
 
- 
+
 
 @endsection

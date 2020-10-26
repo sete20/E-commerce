@@ -20,6 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password/change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password/update', 'HomeController@updatePassword')->name('password.update');
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
+ // For Show Sub category with ajax
+ Route::get('get/subcategory/{category_id}', 'Admin\ProductController@GetSubcat');
 
 //admin=======
 Route::get('admin/home', 'AdminController@index');
@@ -64,5 +66,25 @@ Route::post('update/coupon/{id}', 'Admin\Category\CouponController@UpdateCoupon'
 
 // Newslater
 
-Route::get('admin/newslater', 'Admin\Category\CouponController@Newslater')->name('admin.newslater');
+Route::get('admin/newsletter', 'Admin\Category\CouponController@Newslater')->name('admin.newsletter');
 Route::get('delete/sub/{id}', 'Admin\Category\CouponController@DeleteSub');
+// Frontend All Routes
+Route::post('store/newsletter', 'frontendController@newsletters')->name('store.newsletter');
+
+// Product All Route
+Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
+Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
+Route::post('admin/store/product', 'Admin\ProductController@store')->name('store.product');
+
+Route::get('inactive/product/{id}', 'Admin\ProductController@inactive');
+Route::get('active/product/{id}', 'Admin\ProductController@active');
+Route::get('delete/product/{id}', 'Admin\ProductController@DeleteProduct')->name('product.delete');
+
+Route::get('view/product/{id}', 'Admin\ProductController@ViewProduct');
+Route::get('edit/product/{id}', 'Admin\ProductController@EditProduct');
+
+Route::post('update/product/withoutphoto/{id}', 'Admin\ProductController@UpdateProductWithoutPhoto');
+
+Route::post('update/product/photo/{id}', 'Admin\ProductController@UpdateProductPhoto');
+
+// Blog Admin All
