@@ -1,5 +1,4 @@
  @php
-$setting = DB::table('sitesetting')->first();
 
  @endphp
 
@@ -12,14 +11,14 @@ $setting = DB::table('sitesetting')->first();
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.css') }}">
-<link href="{{ asset('public/frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }} ">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/slick-1.8.0/slick.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
+<link href="{{ asset('frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slick-1.8.0/slick.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 
 <!-- chart -->
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -35,9 +34,9 @@ $setting = DB::table('sitesetting')->first();
 
 
 <div class="super_container">
-    
+
     <!-- Header -->
-    
+
     <header class="header">
 
         <!-- Top Bar -->
@@ -45,27 +44,27 @@ $setting = DB::table('sitesetting')->first();
         <div class="top_bar">
             <div class="container">
                 <div class="row">
-                    <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png')}}" alt=""></div>{{ $setting->phone_one }}</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">{{ $setting->email }}</a></div>
-                        <div class="top_bar_content ml-auto">
-                           
+                    <div class="flex-row col d-flex">
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png')}}" alt=""></div></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com"></a></div>
+                        <div class="ml-auto top_bar_content">
+
 
                      @guest
 
                      @else
              <div class="top_bar_menu">
               <ul class="standard_dropdown top_bar_dropdown">
-                
-                  <li> 
-            <a href="" data-toggle="modal" data-target="#exampleModal">My Order Traking</a>                   
+
+                  <li>
+            <a href="" data-toggle="modal" data-target="#exampleModal">My Order Traking</a>
                   </li>
-                                     
+
                                 </ul>
                             </div>
                      @endguest
 
-                            
+
 
 
 
@@ -73,50 +72,50 @@ $setting = DB::table('sitesetting')->first();
 
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
-                                   
+
                 @php
                   $language = Session()->get('lang');
                 @endphp
 
 
                                     <li>
-                                @if(Session()->get('lang') == 'hindi' )
+                                @if(Session()->get('lang') == 'arabic' )
                                  <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
                                 @else
-                                 <a href="{{ route('language.hindi') }}">Hindi<i class="fas fa-chevron-down"></i></a>
-                                @endif        
-                       
-                        
-                                         
+                                 <a href="">Arabic<i class="fas fa-chevron-down"></i></a>
+                                @endif
+
+
+
                                     </li>
-                                     
+
                                 </ul>
                             </div>
                             <div class="top_bar_user">
 
                          @guest
-                <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg')}}" alt=""></div> Register/Login</a></div>
+                <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt=""></div> Register/Login</a></div>
                          @else
 
                     <ul class="standard_dropdown top_bar_dropdown">
                                     <li>
-           <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
+           <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
-                                            <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
+                                            <li><a href="">Wishlist</a></li>
+                                            <li><a href="">Checkout</a></li>
                                             <li><a href="#">Others</a></li>
                                         </ul>
                                     </li>
-                                    
-                                </ul> 
+
+                                </ul>
                          @endguest
- 
-                                
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>      
+            </div>
         </div>
 
         <!-- Header Main -->
@@ -126,9 +125,9 @@ $setting = DB::table('sitesetting')->first();
                 <div class="row">
 
                     <!-- Logo -->
-                    <div class="col-lg-2 col-sm-3 col-3 order-1">
+                    <div class="order-1 col-lg-2 col-sm-3 col-3">
                         <div class="logo_container">
-                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('public/frontend/images/logo.png')}}" alt=""></a></div>
+                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('frontend/images/logo.png')}}" alt=""></a></div>
                         </div>
                     </div>
 
@@ -137,11 +136,11 @@ $setting = DB::table('sitesetting')->first();
   $category = DB::table('categories')->get();
    @endphp
                     <!-- Search -->
-                    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                    <div class="order-3 text-right col-lg-6 col-12 order-lg-2 text-lg-left">
                         <div class="header_search">
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
-                <form  method="post" action="{{ route('product.search') }}" class="header_search_form clearfix">
+                <form  method="post" action="" class="clearfix header_search_form">
                     @csrf
    <input type="search" required="required" class="header_search_input" placeholder="Search for products..." name="search">
                     <div class="custom_dropdown">
@@ -150,12 +149,12 @@ $setting = DB::table('sitesetting')->first();
                             <i class="fas fa-chevron-down"></i>
 <ul class="custom_list clc">
   @foreach($category as $row)
-    <li><a class="clc" href="#">{{ $row->category_name }}</a></li>
+    <li><a class="" href="#">{{ $row->category_name }}</a></li>
     @endforeach
 </ul>
                         </div>
                     </div>
-                    <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('public/frontend/images/search.png')}}" alt=""></button>
+                    <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('frontend/images/search.png')}}" alt=""></button>
                 </form>
                                 </div>
                             </div>
@@ -163,24 +162,22 @@ $setting = DB::table('sitesetting')->first();
                     </div>
 
                     <!-- Wishlist -->
-                    <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-                        <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-                            <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                    <div class="order-2 text-right col-lg-4 col-9 order-lg-3 text-lg-left">
+                        <div class="flex-row wishlist_cart d-flex align-items-center justify-content-end">
+                            <div class="flex-row wishlist d-flex align-items-center justify-content-end">
                      @guest
 
                      @else
-               
-
-               @php
-         $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
-               @endphp
 
 
 
-                                <div class="wishlist_icon"><img src="{{ asset('public/frontend/images/heart.png')}}" alt=""></div>
+
+
+
+                                <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png')}}" alt=""></div>
                                 <div class="wishlist_content">
                                     <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                    <div class="wishlist_count">{{ count($wishlist) }}</div>
+                                    <div class="wishlist_count"></div>
                                 </div>
                             </div>
 
@@ -188,14 +185,14 @@ $setting = DB::table('sitesetting')->first();
 
                             <!-- Cart -->
                             <div class="cart">
-                                <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                <div class="flex-row cart_container d-flex align-items-center justify-content-end">
                                     <div class="cart_icon">
-                                        <img src="{{ asset('public/frontend/images/cart.png')}}" alt="">
-                                        <div class="cart_count"><span>{{ Cart::count() }}</span></div>
+                                        <img src="{{ asset('frontend/images/cart.png')}}" alt="">
+                                        <div class="cart_count"><span></span></div>
                                     </div>
                                     <div class="cart_content">
-                                        <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
-                                        <div class="cart_price">${{ Cart::subtotal() }}</div>
+                                        <div class="cart_text"><a href="">Cart</a></div>
+                                        <div class="cart_price">$</div>
                                     </div>
                                 </div>
                             </div>
@@ -204,18 +201,15 @@ $setting = DB::table('sitesetting')->first();
                 </div>
             </div>
         </div>
-        
+
         <!-- Main Navigation -->
 
-     
+
     <!-- Characteristics -->
 
 @yield('content')
     <!-- Footer -->
- @php
-$setting = DB::table('sitesetting')->first();
 
- @endphp
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -223,20 +217,20 @@ $setting = DB::table('sitesetting')->first();
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">{{ $setting->company_name }}</a></div>
+                            <div class="logo"><a href="#"></a></div>
                         </div>
                         <div class="footer_title">Got Question? Call Us 24/7</div>
-                        <div class="footer_phone">{{ $setting->phone_two }}</div>
+                        <div class="footer_phone"></div>
                         <div class="footer_contact_text">
-                            <p>{{ $setting->company_address }}</p>
+                            <p></p>
                         </div>
                         <div class="footer_social">
                             <ul>
-                                <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="{{ $setting->youtube }}"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="{{ $setting->instagram }}"><i class="fab fa-google"></i></a></li>
-                                 
+                                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                                <li><a href=""><i class="fab fa-google"></i></a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -296,7 +290,7 @@ $setting = DB::table('sitesetting')->first();
         <div class="container">
             <div class="row">
                 <div class="col">
-                    
+
                     <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                         <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -304,10 +298,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
                         <div class="logos ml-sm-auto">
                             <ul class="logos_list">
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_1.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_2.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_3.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_4.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('frontend/images/logos_1.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('frontend/images/logos_2.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('frontend/images/logos_3.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('frontend/images/logos_4.png')}}" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -329,20 +323,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </button>
       </div>
       <div class="modal-body">
-   <form method="post" action="{{ route('order.tracking') }}">
+   <form method="post" action="">
     @csrf
     <div class="modal-body">
         <label> Status Code</label>
-        <input type="text" name="code" required="" class="form-control" placeholder="Your Order Status Code">        
+        <input type="text" name="code" required="" class="form-control" placeholder="Your Order Status Code">
     </div>
-     
-     <button class="btn btn-danger" type="submit">Track Now </button>  
+
+     <button class="btn btn-danger" type="submit">Track Now </button>
 
    </form>
-  
-        
+
+
       </div>
-       
+
     </div>
   </div>
 </div>
@@ -356,28 +350,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-<script src="{{ asset('public/frontend/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{ asset('public/frontend/styles/bootstrap4/popper.js')}}"></script>
-<script src="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/greensock/TweenMax.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/slick-1.8.0/slick.js')}}"></script>
-<script src="{{ asset('public/frontend/plugins/easing/easing.js')}}"></script>
-<script src="{{ asset('public/frontend/js/custom.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{ asset('frontend/styles/bootstrap4/popper.js')}}"></script>
+<script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
+<script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+<script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js')}}"></script>
+<script src="{{ asset('frontend/plugins/easing/easing.js')}}"></script>
+<script src="{{ asset('frontend/js/custom.js')}}"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
-<script src="{{ asset('public/frontend/js/product_custom.js')}}"></script>
+<script src="{{ asset('frontend/js/product_custom.js')}}"></script>
 
 
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
- 
+
 
  <script>
         @if(Session::has('messege'))
@@ -397,10 +391,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                   break;
           }
         @endif
-     </script>  
+     </script>
 
 
- <script>  
+ <script>
          $(document).on("click", "#return", function(e){
              e.preventDefault();
              var link = $(this).attr("href");

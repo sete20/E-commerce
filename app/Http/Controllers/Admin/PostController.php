@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BlogRequest;
+use App\Http\Requests\PostsRquest;
 use Illuminate\Http\Request;
 use DB;
 use Image;
-
+use File;
 
 class PostController extends Controller
 {
@@ -22,22 +24,14 @@ class PostController extends Controller
   }
 
 
-  public function BlogCatStore(Request $request){
-  $validateDate = $request->validate([
-  'category_name_en' => 'required|max:255',
-  'category_name_in' => 'required|max:255',
-
-  ]);
-
-  $data = array();
-  $data['category_name_en'] = $request->category_name_en;
-  $data['category_name_in'] = $request->category_name_in;
-  DB::table('post_category')->insert($data);
+  public function BlogCatStore(BlogRequest $request){
+  $validateData = $request->validated();
+  DB::table('post_category')->insert($validateData);
   $notification=array(
-            'messege'=>'Blog Category Added Successfully',
-            'alert-type'=>'success'
-             );
-           return Redirect()->back()->with($notification); 
+    'messege'=>'Blog Category Added Successfully',
+    'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
   }
 
 
@@ -60,61 +54,51 @@ class PostController extends Controller
 
    }
 
-  public function UpdateBlogCat(Request $request,$id){
-  $data = array();
-  $data['category_name_en'] = $request->category_name_en;
-  $data['category_name_in'] = $request->category_name_in;
-  DB::table('post_category')->where('id',$id)->update($data);
+  public function UpdateBlogCat(BlogRequest $request,$id){
+    $validateData = $request->validated();
+    DB::table('post_category')->where('id',$id)->update($validateData);
   $notification=array(
             'messege'=>'Blog Category Update Successfully',
             'alert-type'=>'success'
              );
-           return Redirect()->route('add.blog.categorylist')->with($notification); 
- 
+           return Redirect()->route('add.blog.categorylist')->with($notification);
+
  }
 
 
   public function Create(){
 
-   $blogcategory = DB::table('post_category')->get();
-   return view('admin.blog.create',compact('blogcategory'));
+   $blogCategory = DB::table('post_category')->get();
+   return view('admin.blog.create',compact('blogCategory'));
 
   }
 
 
-  public function store(Request $request){
-
-  $data = array();
-  $data['post_title_en'] = $request->post_title_en;
-  $data['post_title_in'] = $request->post_title_in;
-  $data['category_id'] = $request->category_id;
-  $data['details_en'] = $request->details_en;
-  $data['details_in'] = $request->details_in;
-
-  $post_image = $request->file('post_image');
+  public function store(PostsRquest $request){
+    $request->validate(['post_image'=>'nullable|image|mimes:jpg,png,jpeg']);
+    $data = $request->validated();
+    $post_image = $request->file('post_image');
 
   if ($post_image) {
      $post_image_name = hexdec(uniqid()).'.'.$post_image->getClientOriginalExtension();
-     Image::make($post_image)->resize(400,200)->save('public/media/post/'.$post_image_name);
-     $data['post_image'] = 'public/media/post/'.$post_image_name;
-
+     $location='media/post/'. $post_image_name;
+     Image::make($post_image)->resize(400,200)->save($location);
+     $data['post_image'] =$location;
      DB::table('posts')->insert($data);
      $notification=array(
             'messege'=>'Post Inserted Successfully',
             'alert-type'=>'success'
-             );
-           return Redirect()->back()->with($notification);
-
-  }else{
-  	$data['post_image']='';
+        );
+    return Redirect()->back()->with($notification);
+  }
+  	$request->post_image='';
   	DB::table('posts')->insert($data);
      $notification=array(
             'messege'=>'Post Inserted Without Image',
             'alert-type'=>'success'
              );
            return Redirect()->back()->with($notification);
- 
-       }
+
   }
 
 
@@ -126,7 +110,7 @@ class PostController extends Controller
              ->get();
             return view('admin.blog.index',compact('post'));
             // return response()->json($post);
- 
+
   }
 
 
@@ -134,15 +118,17 @@ class PostController extends Controller
   public function DeletePost($id){
   $post = DB::table('posts')->where('id',$id)->first();
   $image = $post->post_image;
-  unlink($image);
-
+  $location='public/media/post/'. $image;
+  if (file_exists($location)) {
+    unlink($image);
+  }
   DB::table('posts')->where('id',$id)->delete();
    $notification=array(
             'messege'=>'Post Deleted Successfully',
             'alert-type'=>'success'
              );
            return Redirect()->back()->with($notification);
- 
+
   }
 
 
@@ -152,26 +138,25 @@ class PostController extends Controller
 
   }
 
- public function UpdatePost(Request $request,$id){
+ public function UpdatePost($id,PostsRquest $request){
+    $oldimage = $request->old_image;
 
-  $oldimage = $request->old_image;
+    $data = $request->validated();
+      $post_image = $request->file('post_image');
 
-$data = array();
-  $data['post_title_en'] = $request->post_title_en;
-  $data['post_title_in'] = $request->post_title_in;
-  $data['category_id'] = $request->category_id;
-  $data['details_en'] = $request->details_en;
-  $data['details_in'] = $request->details_in;
+    if ($post_image)
+    {
+      $location_1='public/media/post/'. $oldimage;
 
-  $post_image = $request->file('post_image');
-
-  if ($post_image) {
-  	unlink($oldimage);
-     $post_image_name = hexdec(uniqid()).'.'.$post_image->getClientOriginalExtension();
-     Image::make($post_image)->resize(400,200)->save('public/media/post/'.$post_image_name);
-     $data['post_image'] = 'public/media/post/'.$post_image_name;
-
-     DB::table('posts')->where('id',$id)->update($data);
+      if (file_exists($location_1)) {
+            unlink($oldimage);
+        }
+        // dd($data);
+      $post_image_name = hexdec(uniqid()).'.'.$post_image->getClientOriginalExtension();
+      $location='media/post/'. $post_image_name;
+      Image::make($post_image)->resize(400,200)->save($location);
+      $data['post_image'] =$location;
+         DB::table('posts')->where('id',$id)->update($data);
      $notification=array(
             'messege'=>'Post Updated Successfully',
             'alert-type'=>'success'
@@ -186,10 +171,10 @@ $data = array();
             'alert-type'=>'success'
              );
             return Redirect()->route('all.blogpost')->with($notification);
- 
-       } 
+
+       }
  }
 
- 
+
 
 }

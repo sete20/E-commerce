@@ -141,19 +141,19 @@
 
 
 
-         <a href="#" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
-            <span class="menu-item-label">Blog</span>
-            <i class="menu-item-arrow fa fa-angle-down"></i>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-    <li class="nav-item"><a href="" class="nav-link">Blog Category</a></li>
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+              <span class="menu-item-label">Blog</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+      <li class="nav-item"><a href="{{ route('add.blog.categorylist') }}" class="nav-link">Blog Category</a></li>
 
-          <li class="nav-item"><a href="" class="nav-link">Add Post</a></li>
-          <li class="nav-item"><a href="" class="nav-link">Post List</a></li>
-        </ul>
+            <li class="nav-item"><a href="{{ route('add.blogpost') }}" class="nav-link">Add Post</a></li>
+            <li class="nav-item"><a href="{{ route('all.blogpost') }}" class="nav-link">Post List</a></li>
+          </ul>
 
 
 <a href="#" class="sl-menu-link">
