@@ -103,3 +103,9 @@ Route::get('delete/post/{id}', 'Admin\PostController@DeletePost');
 Route::get('edit/post/{id}', 'Admin\PostController@EditPost');
 
 Route::post('update/post/{id}', 'Admin\PostController@UpdatePost');
+
+
+// Product details Page
+Route::get('products/{id}', 'ProductController@ProductsView');
+Route::get('allcategory/{id}', 'ProductController@CategoryView');
+Route::get('add/wishlist/{id}', 'WishlistController@add_to_wish_list');

@@ -1,6 +1,4 @@
- @php
 
- @endphp
 
 
  <!DOCTYPE html>
@@ -11,14 +9,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
-<link href="{{ asset('frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }} ">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slick-1.8.0/slick.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/bootstrap4/bootstrap.min.css') }}">
+<link href="{{ asset('/frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/plugins/slick-1.8.0/slick.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/main_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/responsive.css') }}">
 
 <!-- chart -->
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -45,8 +43,8 @@
             <div class="container">
                 <div class="row">
                     <div class="flex-row col d-flex">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png')}}" alt=""></div></div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com"></a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/phone.png')}}" alt=""></div></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com"></a></div>
                         <div class="ml-auto top_bar_content">
 
 
@@ -79,11 +77,8 @@
 
 
                                     <li>
-                                @if(Session()->get('lang') == 'arabic' )
-                                 <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
-                                @else
-                                 <a href="">Arabic<i class="fas fa-chevron-down"></i></a>
-                                @endif
+                                 <a href="">English<i class="fas fa-chevron-down"></i></a>
+                                 <a href="">Hindi<i class="fas fa-chevron-down"></i></a>
 
 
 
@@ -94,12 +89,12 @@
                             <div class="top_bar_user">
 
                          @guest
-                <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt=""></div> Register/Login</a></div>
+                <div><a href="{{ route('login') }}"><div class="user_icon"><img src="{{ asset('/frontend/images/user.svg')}}" alt=""></div> Register/Login</a></div>
                          @else
 
                     <ul class="standard_dropdown top_bar_dropdown">
                                     <li>
-           <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
+           <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('/frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <li><a href="">Wishlist</a></li>
                                             <li><a href="">Checkout</a></li>
@@ -127,7 +122,7 @@
                     <!-- Logo -->
                     <div class="order-1 col-lg-2 col-sm-3 col-3">
                         <div class="logo_container">
-                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('frontend/images/logo.png')}}" alt=""></a></div>
+                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('/frontend/images/logo.png')}}" alt=""></a></div>
                         </div>
                     </div>
 
@@ -149,12 +144,12 @@
                             <i class="fas fa-chevron-down"></i>
 <ul class="custom_list clc">
   @foreach($category as $row)
-    <li><a class="" href="#">{{ $row->category_name }}</a></li>
+    <li><a class="clc" href="#">{{ $row->category_name }}</a></li>
     @endforeach
 </ul>
                         </div>
                     </div>
-                    <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('frontend/images/search.png')}}" alt=""></button>
+                    <button type="submit" class="header_search_button trans_300" value="Submit"><img src="{{ asset('/frontend/images/search.png')}}" alt=""></button>
                 </form>
                                 </div>
                             </div>
@@ -170,14 +165,16 @@
                      @else
 
 
+               @php
+         $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
+               @endphp
 
 
 
-
-                                <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png')}}" alt=""></div>
+                                <div class="wishlist_icon"><img src="{{ asset('/frontend/images/heart.png')}}" alt=""></div>
                                 <div class="wishlist_content">
                                     <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                    <div class="wishlist_count"></div>
+                                    <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>
 
@@ -187,12 +184,12 @@
                             <div class="cart">
                                 <div class="flex-row cart_container d-flex align-items-center justify-content-end">
                                     <div class="cart_icon">
-                                        <img src="{{ asset('frontend/images/cart.png')}}" alt="">
-                                        <div class="cart_count"><span></span></div>
+                                        <img src="{{ asset('/frontend/images/cart.png')}}" alt="">
+                                        <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                                     </div>
                                     <div class="cart_content">
                                         <div class="cart_text"><a href="">Cart</a></div>
-                                        <div class="cart_price">$</div>
+                                        <div class="cart_price">${{ Cart::subtotal() }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +206,9 @@
 
 @yield('content')
     <!-- Footer -->
+ @php
 
+ @endphp
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -298,10 +297,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
                         <div class="logos ml-sm-auto">
                             <ul class="logos_list">
-                                <li><a href="#"><img src="{{ asset('frontend/images/logos_1.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('frontend/images/logos_2.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('frontend/images/logos_3.png')}}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('frontend/images/logos_4.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('/frontend/images/logos_1.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('/frontend/images/logos_2.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('/frontend/images/logos_3.png')}}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('/frontend/images/logos_4.png')}}" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -350,23 +349,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-<script src="{{ asset('frontend/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{ asset('frontend/styles/bootstrap4/popper.js')}}"></script>
-<script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
-<script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
-<script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js')}}"></script>
-<script src="{{ asset('frontend/plugins/easing/easing.js')}}"></script>
-<script src="{{ asset('frontend/js/custom.js')}}"></script>
+<script src="{{ asset('/frontend/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{ asset('/frontend/styles/bootstrap4/popper.js')}}"></script>
+<script src="{{ asset('/frontend/styles/bootstrap4/bootstrap.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/greensock/TweenMax.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/slick-1.8.0/slick.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/easing/easing.js')}}"></script>
+<script src="{{ asset('/frontend/js/custom.js')}}"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
-<script src="{{ asset('frontend/js/product_custom.js')}}"></script>
+<script src="{{ asset('/frontend/js/product_custom.js')}}"></script>
 
 
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
