@@ -1,4 +1,4 @@
-
+   
    @php
 
 $category = DB::table('categories')->get();
@@ -8,45 +8,45 @@ $category = DB::table('categories')->get();
             <div class="container">
                 <div class="row">
                     <div class="col">
-
-                        <div class="flex-row main_nav_content d-flex">
+                        
+                        <div class="main_nav_content d-flex flex-row">
 
                             <!-- Categories Menu -->
 
                             <div class="cat_menu_container">
-                                <div class="flex-row cat_menu_title d-flex align-items-center justify-content-start">
+                                <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                                     <div class="cat_burger"><span></span><span></span><span></span></div>
                                     <div class="cat_menu_text">categories</div>
                                 </div>
 
         <ul class="cat_menu">
-
+            
             @foreach($category as $cat)
             <li class="hassubs">
                 <a href="{{ url('allcategory/'.$cat->id) }}">{{ $cat->category_name }}<i class="fas fa-chevron-right"></i></a>
                 <ul>
 
     @php
-  $subcategory = DB::table('sub_categories')->where('category_id',$cat->id)->get();
+  $subcategory = DB::table('subcategories')->where('category_id',$cat->id)->get();
     @endphp
 
                   @foreach($subcategory as $row)
                     <li class="hassubs">
                         <a href="{{ url('products/'.$row->id) }}">{{ $row->subcategory_name }}<i class="fas fa-chevron-right"></i></a>
-
+                         
                     </li>
                     @endforeach
-
+                    
                 </ul>
             </li>
             @endforeach
-
+            
         </ul>
                             </div>
 
                             <!-- Main Nav Menu -->
 
-                            <div class="ml-auto main_nav_menu">
+                            <div class="main_nav_menu ml-auto">
                                 <ul class="standard_dropdown main_nav_dropdown">
                                     <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
                                     <li class="hassubs">
@@ -93,16 +93,16 @@ $category = DB::table('categories')->get();
                                             <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
                                         </ul>
                                     </li>
-       <li><a href="">Blog<i class="fas fa-chevron-down"></i></a></li>
+       <li><a href="{{ route('blog.post') }}">Blog<i class="fas fa-chevron-down"></i></a></li>
 
-        <li><a href="">Contact<i class="fas fa-chevron-down"></i></a></li>
+        <li><a href="{{ route('contact.page') }}">Contact<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
 
                             <!-- Menu Trigger -->
 
-                            <div class="ml-auto menu_trigger_container">
-                                <div class="flex-row menu_trigger d-flex align-items-center justify-content-end">
+                            <div class="menu_trigger_container ml-auto">
+                                <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
                                     <div class="menu_burger">
                                         <div class="menu_trigger_text">menu</div>
                                         <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
@@ -115,16 +115,16 @@ $category = DB::table('categories')->get();
                 </div>
             </div>
         </nav>
-
+        
         <!-- Menu -->
 
         <div class="page_menu">
             <div class="container">
                 <div class="row">
                     <div class="col">
-
+                        
                         <div class="page_menu_content">
-
+                            
                             <div class="page_menu_search">
                                 <form action="#">
                                     <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -191,10 +191,10 @@ $category = DB::table('categories')->get();
                                 <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
                                 <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
                             </ul>
-
+                            
                             <div class="menu_contact">
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('frontend/images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('frontend/images/mail_white.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('public/frontend/images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{ asset('public/frontend/images/mail_white.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                             </div>
                         </div>
                     </div>
@@ -203,5 +203,5 @@ $category = DB::table('categories')->get();
         </div>
 
     </header>
-
-
+    
+    

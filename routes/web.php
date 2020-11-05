@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {return view('pages.index');});
 //auth & user
 Auth::routes(['verify' => true]);
+Route::get('/product/details/{id}/{product_name}', 'ProductController@productView');
+Route::get('add/to/cart/{id}', 'CartController@addToCart');
+Route::post('/cart/product/add/{id}', 'ProductController@addToCart');
+Route::get('check', 'CartController@check');
+
+Route::post('insert/into/cart/', 'CartController@insertCart')->name('insert.into.cart');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password/change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password/update', 'HomeController@updatePassword')->name('password.update');
@@ -49,7 +55,6 @@ Route::post('admin/store/brand', 'Admin\Category\BrandController@storeBrand')->n
 Route::get('delete/brand/{id}', 'Admin\Category\BrandController@deleteBrand');
 Route::get('edit/brand/{id}', 'Admin\Category\BrandController@editBrand');
 Route::post('update/brand/{id}', 'Admin\Category\BrandController@updateBrand');
-
 // Sub Categories
 Route::get('admin/subcategory', 'Admin\Category\SubCategoryController@subcategory')->name('sub.categories');
 Route::post('admin/store/subcategory', 'Admin\Category\SubCategoryController@storeSubcategory')->name('store.subcategory');
@@ -103,9 +108,13 @@ Route::get('delete/post/{id}', 'Admin\PostController@DeletePost');
 Route::get('edit/post/{id}', 'Admin\PostController@EditPost');
 
 Route::post('update/post/{id}', 'Admin\PostController@UpdatePost');
-
-
+Route::get('/cart/product/view/{id}', 'CartController@viewProduct');
+Route::get('product/cart', 'CartController@ShowCart')->name('show.cart');
+Route::get('remove/cart/{rowId}', 'CartController@removeItem');
+Route::post('update/cart/item/', 'CartController@updateItem')->name('update.cartitem');
 // Product details Page
 Route::get('products/{id}', 'ProductController@ProductsView');
-Route::get('allcategory/{id}', 'ProductController@CategoryView');
+Route::get('/product/details/{id}/{product_name}', 'ProductController@productView')->name('details.page');
 Route::get('add/wishlist/{id}', 'WishlistController@add_to_wish_list');
+// Route::get('delete/wishlist/{id}', 'WishlistController@delete_wish_list');
+

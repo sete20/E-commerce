@@ -204,17 +204,13 @@
 <div class="product_name"><div><a href="{{ url('product/details/'.$row->id.'/'.$row->product_name) }}">{{ $row->product_name }}</a></div></div>
 
 
-              <!--   <div class="product_extras">
 
-     <button class="product_cart_button addcart" data-id="{{ $row->id }}">Add to Cart</button>
-                </div>
-            </div> -->
 
             <div class="product_extras">
-
-     <button id="{{ $row->id }}" class="product_cart_button addcart" data-toggle="modal" data-target="#cartmodal" onclick="productview(this.id)">Add to Cart</button>
-                </div>
+                <button id="{{ $row->id }}" class="product_cart_button addcart"
+                data-toggle="modal" data-target="#cartmodal" onclick="productview(this.id)">Add to Cart</button>
             </div>
+        </div>
 
 
              <button class="addwishlist" data-id="{{ $row->id }}" >
@@ -361,7 +357,7 @@
     <!-- Hot New Category One -->
 
 @php
-$cats = DB::table('categories')->skip(1)->first();
+$cats = DB::table('categories')->first();
 $catid = $cats->id;
 
 $product = DB::table('products')->where('category_id',$catid)->where('status',1)->limit(10)->orderBy('id','DESC')->get();
@@ -397,20 +393,16 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
             <div class="product_content">
 
       @if($row->discount_price == NULL)
-<div class="product_price discount">${{ $row->selling_price }}<span> </div>
+        <div class="product_price discount">${{ $row->selling_price }}<span> </div>
       @else
-<div class="product_price discount">${{ $row->discount_price }}<span>${{ $row->selling_price }}</span></div>
+        <div class="product_price discount">${{ $row->discount_price }}<span>${{ $row->selling_price }}</span></div>
       @endif
 
 
 
                 <div class="product_name"><div><a href="product.html">{{ $row->product_name }}</a></div></div>
                 <div class="product_extras">
-                    <div class="product_color">
-                        <input type="radio" checked name="product_color" style="background:#b19c83">
-                        <input type="radio" name="product_color" style="background:#000000">
-                        <input type="radio" name="product_color" style="background:#999999">
-                    </div>
+
                     <button class="product_cart_button">Add to Cart</button>
                 </div>
             </div>
@@ -465,7 +457,7 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
     <!-- Hot New Category Two -->
 
 @php
-$cats = DB::table('categories')->skip(3)->first();
+$cats = DB::table('categories')->first();
 $catid = $cats->id;
 
 $product = DB::table('products')->where('category_id',$catid)->where('status',1)->limit(10)->orderBy('id','DESC')->get();
@@ -1733,37 +1725,39 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
 
         <div class="col-md-4">
 
-        <form method="post" action="">
-        @csrf
 
-    <input type="hidden" name="product_id" id="product_id">
+            <form method="post" action="{{ route('insert.into.cart') }}">
+                @csrf
 
-         <div class="form-group">
-            <label for="exampleInputcolor">Color</label>
-            <select name="color" class="form-control" id="color">
+            <input type="hidden" name="product_id" id="product_id">
 
-             </select>
+                 <div class="form-group">
+                    <label for="exampleInputcolor">Color</label>
+                    <select name="color" class="form-control" id="color">
 
-         </div>
+                     </select>
 
- <div class="form-group">
-            <label for="exampleInputcolor">Size</label>
-            <select name="size" class="form-control" id="size">
-
-             </select>
-
-         </div>
-
+                 </div>
 
          <div class="form-group">
-     <label for="exampleInputcolor">Quantity</label>
-     <input type="number" class="form-control" name="qty" value="1">
-         </div>
+                    <label for="exampleInputcolor">Size</label>
+                    <select name="size" class="form-control" id="size">
+
+                     </select>
+
+                 </div>
 
 
-<button type="submit" class="btn btn-primary">Add to Cart </button>
+                 <div class="form-group">
+             <label for="exampleInputcolor">Quantity</label>
+             <input type="number" class="form-control" name="qty" value="1">
+                 </div>
 
-</form>
+
+        <button type="submit" class="btn btn-primary">Add to Cart </button>
+
+        </form>
+
 
         </div>
 
@@ -1789,11 +1783,11 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
 
 
 <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  src="https:/code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 
-<script type="text/javascript">
+ <script type="text/javascript">
     function productview(id){
         $.ajax({
          url: "{{ url('/cart/product/view/') }}/"+id,
@@ -1828,55 +1822,56 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
 
 
 
-<!-- <script type="text/javascript">
+ {{--  <script type="text/javascript">
+    $(document).ready(function(){
+        $('.addcart').on('click', function(){
+           var id = $(this).data('id');
+           if (id) {
+               $.ajax({
+                   url: " {{ url('/add/to/cart/') }}/"+id,
+                   type:"GET",
+                   datType:"json",
+                   success:function(data){
+                const Toast = Swal.mixin({
+                     toast: true,
+                     position: 'top-end',
+                     showConfirmButton: false,
+                     timer: 3000,
+                     timerProgressBar: true,
+                     onOpen: (toast) => {
+                       toast.addEventListener('mouseenter', Swal.stopTimer)
+                       toast.addEventListener('mouseleave', Swal.resumeTimer)
+                     }
+                   })
 
-   $(document).ready(function(){
-     $('.addcart').on('click', function(){
-        var id = $(this).data('id');
-        if (id) {
-            $.ajax({
-                url: " {{ url('/add/to/cart/') }}/"+id,
-                type:"GET",
-                datType:"json",
-                success:function(data){
-             const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-                })
+                if ($.isEmptyObject(data.error)) {
 
-             if ($.isEmptyObject(data.error)) {
-
-                Toast.fire({
-                  icon: 'success',
-                  title: data.success
-                })
-             }else{
-                 Toast.fire({
-                  icon: 'error',
-                  title: data.error
-                })
-             }
-
-
-                },
-            });
-
-        }else{
-            alert('danger');
-        }
-     });
-
-   });
+                   Toast.fire({
+                     icon: 'success',
+                     title: data.success
+                   })
+                }else{
+                    Toast.fire({
+                     icon: 'error',
+                     title: data.error
+                   })
+                }
 
 
-</script> -->
+                   },
+               });
+
+           }else{
+               alert('danger');
+           }
+        });
+
+      });
+
+  --}}
+
+
+</script>
 
 
 

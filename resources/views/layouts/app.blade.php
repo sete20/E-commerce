@@ -50,7 +50,6 @@
 
                      @guest
 
-                     @else
              <div class="top_bar_menu">
               <ul class="standard_dropdown top_bar_dropdown">
 
@@ -70,12 +69,6 @@
 
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
-
-                @php
-                  $language = Session()->get('lang');
-                @endphp
-
-
                                     <li>
                                  <a href="">English<i class="fas fa-chevron-down"></i></a>
                                  <a href="">Hindi<i class="fas fa-chevron-down"></i></a>
@@ -188,7 +181,8 @@
                                         <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                                     </div>
                                     <div class="cart_content">
-                                        <div class="cart_text"><a href="">Cart</a></div>
+                                                                               <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
+
                                         <div class="cart_price">${{ Cart::subtotal() }}</div>
                                     </div>
                                 </div>
@@ -206,9 +200,7 @@
 
 @yield('content')
     <!-- Footer -->
- @php
 
- @endphp
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -227,7 +219,7 @@
                             <ul>
                                 <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="}"><i class="fab fa-youtube"></i></a></li>
                                 <li><a href=""><i class="fab fa-google"></i></a></li>
 
                             </ul>
