@@ -126,11 +126,55 @@ class cartController extends Controller
                          'messege'=>'Product Added Successfully',
                          'alert-type'=>'success'
                           );
-                        return Redirect()->back()->with($notification);
-
-  }
+                          return redirect()->back()->with($notification);
+             }
 
     }
 
+    public function checkout(){
+        if (Auth::check()) {
+            $cart = Cart::content();
+            return view('pages.checkout',compact('cart'));
+        }
+      $notification=array(
+            'messege'=>'Please login',
+            'alert-type'=>'error'
+             );
+           return Redirect()->route('login')->with($notification);
+    }
+    public function Coupon(request $request){
+        $coupon =$request->coupon;
+        $check = DB::table('coupons')->where('coupon',$coupon)->first();
+        if ($check) {
+            Session::put('coupon', [
+                'name'=>$check->coupon,
+                'discount'=>$check->discount,
+                'balance'=>Cart::Subtotal()-$check->discount,
+            ]);
+            
+            $notification=array(
+                'messege'=>'Successfully Coupon Applied',
+                'alert-type'=>'success'
+                 );
+            return Redirect()->back()->with($notification);
+        }
+        $notification=array(
+                        'messege'=>'Invalid Coupon',
+                        'alert-type'=>'success'
+                        );
+                    return Redirect()->back()->with($notification);
+
+                
+    }
+    
+ public function CouponRemove(){
+    Session::forget('coupon');
+    $notification=array(
+                       'messege'=>'Coupon remove Successfully',
+                       'alert-type'=>'success'
+                        );
+                      return Redirect()->back()->with($notification);
+
+}
 
 }

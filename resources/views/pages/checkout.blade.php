@@ -3,6 +3,12 @@
 @section('content')
 @include('layouts.menubar')
 
+@php
+$setting = DB::table('settings')->first();
+$charge= $setting->shipping_charge;
+$vat= $setting->vat;
+@endphp
+
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/cart_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/cart_responsive.css') }}">
 	<!-- Cart -->
@@ -12,7 +18,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="cart_container">
-						<div class="cart_title">Shopping Cart</div>
+						<div class="cart_title">Checkout</div>
 						<div class="cart_items">
 							<ul class="cart_list">
 
@@ -52,7 +58,7 @@
            <form method="post" action="{{ route('update.cartitem') }}">
            	@csrf
            	<input type="hidden" name="productid" value="{{ $row->rowId }}">
-           	<input type="number" name="qty" value="{{ $row->qty }}" min= "1" max="{{ $row->produc_quantity }}" style="width: 50px;">
+           	<input type="number" name="qty" value="{{ $row->qty }}" style="width: 50px;">
            	<button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check-square"></i> </button>
 
            </form>
@@ -83,16 +89,63 @@
 						</div>
 
 						<!-- Order Total -->
-						<div class="order_total">
-							<div class="order_total_content text-md-right">
-								<div class="order_total_title">Order Total:</div>
-								<div class="order_total_amount">${{ Cart::total() }}</div>
-							</div>
-						</div>
+
+          <div class="order_total_content" style="padding: 15px;">
+         @if(Session::has('coupon'))
+
+         @else
+
+          <h5 style="margin-left: 20px;"> Apply Coupon </h5>
+          	<form method="post" action="{{ route('apply.coupon') }}">
+          		@csrf
+          		<div class="form group col-lg-4">
+          			<input type="text" name="coupon" class="form-control" required="" placeholder="Enter Your Coupon">
+          		</div><br>
+         <button type="submit" class="ml-2 btn btn-danger">Submit
+         </button>
+          	</form>
+          	@endif
+
+          </div>
+
+          <ul class="list-group col-lg-4" style="float: right;">
+          	@if(Session::has('coupon'))
+          	<li class="list-group-item">Subtotal : <span style="float: right;">
+          	${{ Session::get('coupon')['balance'] }} </span> </li>
+          	 <li class="list-group-item">Coupon : ({{ Session::get('coupon')['name'] }} )
+                <a href="{{ route('coupon.remove') }}" class="btn btn-danger btn-sm">X</a>
+           <span style="float: right;">${{ Session::get('coupon')['balance'] + $charge + $vat }} </span> </li>
+           @else
+          	<li class="list-group-item">Subtotal : <span style="float: right;">
+          	${{  Cart::Subtotal() }} </span> </li>
+          	@endif
+
+
+
+          	<li class="list-group-item">Shiping Charge : <span style="float: right;">${{ $charge }} </span> </li>
+          	<li class="list-group-item">Vat : <span style="float: right;">$ {{ $vat }} </span> </li>
+          	@if(Session::has('coupon'))
+          	<li class="list-group-item">Total : <span style="float: right;">${{ Session::get('coupon')['balance'] }} </span> </li>
+          	@else
+      <li class="list-group-item">Total : <span style="float: right;">${{ Cart::Subtotal() }} </span> </li>
+          	@endif
+
+
+          </ul>
+           </div>
+            </div>
+             </div>
+
+
+
+
+
+
+
 
 						<div class="cart_buttons">
 							<button type="button" class="button cart_button_clear">All Cancel</button>
-	 <a href="{{ url('user/checkout') }}"  class="button cart_button_checkout">Checkout</a>
+	 <a href=""  class="button cart_button_checkout">Final Step</a>
 						</div>
 					</div>
 				</div>

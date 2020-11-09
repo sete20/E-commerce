@@ -28,7 +28,15 @@ Route::post('/password/update', 'HomeController@updatePassword')->name('password
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
  // For Show Sub category with ajax
  Route::get('get/subcategory/{category_id}', 'Admin\ProductController@GetSubcat');
+ Route::get('user/checkout/', 'CartController@checkout')->name('user.checkout');
+ Route::post('user/apply/coupon/', 'CartController@Coupon')->name('apply.coupon');
+/// Blog Post Route
 
+Route::get('blog/post/', 'BlogController@blog')->name('blog.post');
+
+Route::get('language/english', 'BlogController@English')->name('language.english');
+Route::get('language/arabic', 'BlogController@Arabic')->name('language.arabic');
+Route::get('blog/single/{id}', 'BlogController@BlogSingle');
 //admin=======
 Route::get('admin/home', 'AdminController@index');
 Route::get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
@@ -68,6 +76,7 @@ Route::post('admin/store/coupon', 'Admin\Category\CouponController@StoreCoupon')
 Route::get('delete/coupon/{id}', 'Admin\Category\CouponController@DeleteCoupon');
 Route::get('edit/coupon/{id}', 'Admin\Category\CouponController@EditCoupon');
 Route::post('update/coupon/{id}', 'Admin\Category\CouponController@UpdateCoupon');
+Route::get('coupon/remove/', 'CartController@CouponRemove')->name('coupon.remove');
 
 // Newslater
 

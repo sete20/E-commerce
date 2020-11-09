@@ -66,19 +66,28 @@
 
 
 
+                     <div class="top_bar_menu">
+                        <ul class="standard_dropdown top_bar_dropdown">
 
-                            <div class="top_bar_menu">
-                                <ul class="standard_dropdown top_bar_dropdown">
-                                    <li>
-                                 <a href="">English<i class="fas fa-chevron-down"></i></a>
-                                 <a href="">Hindi<i class="fas fa-chevron-down"></i></a>
+        @php
+          $language = Session()->get('lang');
+        @endphp
+
+
+                            <li>
+                        @if(Session()->get('lang') == 'arabic' )
+                         <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
+                        @else
+                         <a href="{{ route('language.arabic') }}">Arabic<i class="fas fa-chevron-down"></i></a>
+                        @endif
 
 
 
-                                    </li>
+                            </li>
 
-                                </ul>
-                            </div>
+                        </ul>
+                    </div>
+
                             <div class="top_bar_user">
 
                          @guest
