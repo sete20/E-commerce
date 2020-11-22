@@ -3,8 +3,8 @@
 @section('content')
 @include('layouts.menubar')
 
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/shop_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/shop_responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/shop_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/frontend/styles/shop_responsive.css') }}">
 
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
@@ -33,7 +33,7 @@
 								@foreach($category as $cat)
 				 <li><a href="{{ url('allcategory/'.$cat->id) }}">{{ $cat->category_name }}</a></li>
 								@endforeach
-								 
+
 							</ul>
 						</div>
 						<div class="sidebar_section filter_by_section">
@@ -45,18 +45,18 @@
 								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
 							</div>
 						</div>
-						 
+
 						<div class="sidebar_section">
 							<div class="sidebar_subtitle brands_subtitle">Brands</div>
 							<ul class="brands_list">
-								
+
                             @php
                            $brands =  DB::table('brands')->get();
                             @endphp
 								@foreach($brands as $row)
 			 <li class="brand"><a href="#">{{ $row->brand_name }}</a></li>
 								@endforeach
-								 
+
 							</ul>
 						</div>
 					</div>
@@ -64,11 +64,11 @@
 				</div>
 
 				<div class="col-lg-9">
-					
+
 					<!-- Shop Content -->
 
 					<div class="shop_content">
-						<div class="shop_bar clearfix">
+						<div class="clearfix shop_bar">
 							<div class="shop_product_count"><span>186</span> products found</div>
 							<div class="shop_sorting">
 								<span>Sort by:</span>
@@ -88,23 +88,23 @@
 						<div class="product_grid row">
 							<div class="product_grid_border"></div>
 
-                     @foreach($category_all as $pro)
+                     @foreach($all_categories as $pro)
 							<!-- Product Item -->
 							<div class="product_item is_new">
 								<div class="product_border"></div>
 								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset($pro->image_one) }}" alt="" style="height: 100px; width: 100px;"></div>
 								<div class="product_content">
-									
+
 					  @if($pro->discount_price == NULL)
 <div class="product_price discount">${{ $pro->selling_price }}<span> </div>
       @else
 <div class="product_price discount">${{ $pro->discount_price }}<span>${{ $pro->selling_price }}</span></div>
-      @endif				
+      @endif
 
  <div class="product_name"><div><a href="{{ url('product/details/'.$pro->id.'/'.$pro->product_name) }}" tabindex="0">{{ $pro->product_name  }} </a></div></div>
 								</div>
 								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								
+
 
 								 <ul class="product_marks">
        @if($pro->discount_price == NULL)
@@ -116,12 +116,12 @@
                          $discount = $amount/$pro->selling_price*100;
 
                        @endphp
-                       
+
                        {{ intval($discount) }}%
 
-                      </li>  
-                        @endif     
-            </ul> 
+                      </li>
+                        @endif
+            </ul>
 							</div>
                           @endforeach
 
@@ -129,12 +129,12 @@
 
 						<!-- Shop Page Navigation -->
 
-						<div class="shop_page_nav d-flex flex-row">
-							 
-							 
-                               {{ $category_all->links() }}
-							  
-							 
+						<div class="flex-row shop_page_nav d-flex">
+
+
+                               {{ $all_categories->links() }}
+
+
 						</div>
 
 					</div>

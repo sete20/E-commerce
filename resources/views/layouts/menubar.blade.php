@@ -23,7 +23,7 @@ $category = DB::table('categories')->get();
 
             @foreach($category as $cat)
             <li class="hassubs">
-                <a href="{{ url('allcategory/'.$cat->id) }}">{{ $cat->category_name }}<i class="fas fa-chevron-right"></i></a>
+                <a href="{{ url('all/categories/'.$cat->id) }}">{{ $cat->category_name }}<i class="fas fa-chevron-right"></i></a>
                 <ul>
 
     @php

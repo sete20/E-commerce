@@ -16,8 +16,10 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
         "laravel/helpers": "^1.3",
+        "laravel/passport": "~9.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "2.4"
+        "laravel/ui": "2.4",
+        "stripe/stripe-php": "^7.65"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
