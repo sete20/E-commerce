@@ -129,8 +129,28 @@ Route::get('all/categories/{id}', 'ProductController@allCategories');
 Route::get('/product/details/{id}/{product_name}', 'ProductController@productView')->name('details.page');
 Route::get('add/wishlist/{id}', 'WishlistController@add_to_wish_list');
 // Route::get('delete/wishlist/{id}', 'WishlistController@delete_wish_list');
-
+Route::get('user/wishlist/', 'CartController@wishlist')->name('user.wishlist');
 // Pyment Step
 Route::get('payment/page', 'CartController@PaymentPage')->name('payment.step');
 Route::post('user/payment/process/', 'PaymentController@Payment')->name('payment.process');
 Route::post('buyByStripe', 'PaymentController@buyByStripe')->name('stripe.charge');
+//order routes
+Route::get('admin/pading/order', 'Admin\OrderController@NewOrder')->name('admin.newOrder');
+Route::get('admin/view/order/{id}', 'Admin\OrderController@ViewOrder');
+
+Route::get('admin/payment/accept/{id}', 'Admin\OrderController@PaymentAccept');
+Route::get('admin/payment/cancel/{id}', 'Admin\OrderController@PaymentCancel');
+
+Route::get('admin/accept/payment', 'Admin\OrderController@AcceptPayment')->name('admin.accept.payment');
+
+Route::get('admin/cancel/order', 'Admin\OrderController@CancelOrder')->name('admin.cancel.order');
+
+Route::get('admin/process/payment', 'Admin\OrderController@ProcessPayment')->name('admin.process.payment');
+Route::get('admin/success/payment', 'Admin\OrderController@SuccessPayment')->name('admin.success.payment');
+
+Route::get('admin/delevery/process/{id}', 'Admin\OrderController@DeleveryProcess');
+Route::get('admin/delevery/done/{id}', 'Admin\OrderController@DeleveryDone');
+
+/// SEO Setting Route
+Route::get('admin/seo', 'Admin\OrderController@seo')->name('admin.seo');
+Route::post('admin/seo/update', 'Admin\OrderController@UpdateSeo')->name('update.seo');

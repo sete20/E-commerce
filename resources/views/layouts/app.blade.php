@@ -21,7 +21,7 @@
 <!-- chart -->
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-         <link rel="stylesheet" href="sweetalert2.min.css">
+         {{--  <link rel="stylesheet" href="sweetalert2.min.css">  --}}
 
      <script src="https://js.stripe.com/v3/"></script>
 
@@ -98,7 +98,7 @@
                                     <li>
            <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('/frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li><a href="">Wishlist</a></li>
+                                            <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
                                             <li><a href="">Checkout</a></li>
                                             <li><a href="#">Others</a></li>
                                         </ul>
@@ -175,7 +175,7 @@
 
                                 <div class="wishlist_icon"><img src="{{ asset('/frontend/images/heart.png')}}" alt=""></div>
                                 <div class="wishlist_content">
-                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                    <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
                                     <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>
@@ -357,7 +357,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('/frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
-<script src="{{ asset('/frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/easing/easing.js')}}"></script>

@@ -1013,7 +1013,7 @@ $product = DB::table('products')->where('category_id',$catid)->where('status',1)
                                 <!-- Best Sellers Item -->
                                 <div class="bestsellers_item">
                                     <div class="flex-row bestsellers_item_container d-flex align-items-center justify-content-start">
-                                        <div class="bestsellers_image"><img src="{{ asset('/frontend/images/featured_1.png')}}{{ asset('/frontend/images/best_6.png')}}" alt=""></div>
+                                        {{--  <div class="bestsellers_image"><img src="{{ asset('/frontend/images/featured_1.png')}}{{ asset('/frontend/images/best_6.png')}}" alt=""></div>  --}}
                                         <div class="bestsellers_content">
                                             <div class="bestsellers_category"><a href="#">Headphones</a></div>
                                             <div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
