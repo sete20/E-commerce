@@ -165,7 +165,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="" class="nav-link">Newslaters</a></li>
-           <li class="nav-item"><a href=" class="nav-link">SEO Setting </a></li>
+           <li class="nav-item"><a href="{{ route('admin.seo') }}" class="nav-link">SEO Setting </a></li>
 
         </ul>
 
@@ -176,13 +176,15 @@
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Today Order</a></li>
-           <li class="nav-item"><a href="" class="nav-link">Today Delivery </a></li>
-           <li class="nav-item"><a href="" class="nav-link">This Month </a></li>
-             <li class="nav-item"><a href="" class="nav-link">Search Report </a></li>
+              <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('today.order') }}" class="nav-link">Today Order</a></li>
+           <li class="nav-item"><a href="{{ route('today.delivery') }}" class="nav-link">Today Delivery </a></li>
+           <li class="nav-item"><a href="{{ route('this.month') }}" class="nav-link">This Month </a></li>
+             <li class="nav-item"><a href="{{ route('search.report') }}" class="nav-link">Search Report </a></li>
 
         </ul>
+
+
 
 
 

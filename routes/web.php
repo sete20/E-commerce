@@ -154,3 +154,19 @@ Route::get('admin/delevery/done/{id}', 'Admin\OrderController@DeleveryDone');
 /// SEO Setting Route
 Route::get('admin/seo', 'Admin\OrderController@seo')->name('admin.seo');
 Route::post('admin/seo/update', 'Admin\OrderController@UpdateSeo')->name('update.seo');
+// Order Tracking Route
+Route::post('order/tracking', 'frontendController@OrderTracking')->name('order.tracking');
+
+
+// Order Report Routes
+
+Route::get('admin/today/order', 'Admin\ReportController@TodayOrder')->name('today.order');
+Route::get('admin/today/delivery', 'Admin\ReportController@TodayDelivery')->name('today.delivery');
+
+Route::get('admin/this/month', 'Admin\ReportController@ThisMonth')->name('this.month');
+Route::get('admin/search/report', 'Admin\ReportController@Search')->name('search.report');
+
+Route::post('admin/search/by/year', 'Admin\ReportController@SearchByYear')->name('search.by.year');
+Route::post('admin/search/by/month', 'Admin\ReportController@SearchByMonth')->name('search.by.month');
+
+Route::post('admin/search/by/date', 'Admin\ReportController@SearchByDate')->name('search.by.date');

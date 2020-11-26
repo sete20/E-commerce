@@ -39,7 +39,7 @@
 
         <!-- Top Bar -->
 
-        <div class="top_bar">
+             <div class="top_bar">
             <div class="container">
                 <div class="row">
                     <div class="flex-row col d-flex">
@@ -50,6 +50,7 @@
 
                      @guest
 
+                     @else
              <div class="top_bar_menu">
               <ul class="standard_dropdown top_bar_dropdown">
 
@@ -66,28 +67,28 @@
 
 
 
-                     <div class="top_bar_menu">
-                        <ul class="standard_dropdown top_bar_dropdown">
 
-        @php
-          $language = Session()->get('lang');
-        @endphp
+                            <div class="top_bar_menu">
+                                <ul class="standard_dropdown top_bar_dropdown">
 
-
-                            <li>
-                        @if(Session()->get('lang') == 'arabic' )
-                         <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
-                        @else
-                         <a href="{{ route('language.arabic') }}">Arabic<i class="fas fa-chevron-down"></i></a>
-                        @endif
+                @php
+                  $language = Session()->get('lang');
+                @endphp
 
 
+                                    <li>
+                                @if(Session()->get('lang') == 'arabic' )
+                                 <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
+                                @else
+                                 <a href="{{ route('language.arabic') }}">Arabic<i class="fas fa-chevron-down"></i></a>
+                                @endif
 
-                            </li>
 
-                        </ul>
-                    </div>
 
+                                    </li>
+
+                                </ul>
+                            </div>
                             <div class="top_bar_user">
 
                          @guest
@@ -99,7 +100,7 @@
            <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('/frontend/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
-                                            <li><a href="">Checkout</a></li>
+                                            <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
                                             <li><a href="#">Others</a></li>
                                         </ul>
                                     </li>
@@ -114,6 +115,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Header Main -->
 
@@ -323,7 +325,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </button>
       </div>
       <div class="modal-body">
-   <form method="post" action="">
+   <form method="post" action="{{ route('order.tracking') }}">
     @csrf
     <div class="modal-body">
         <label> Status Code</label>

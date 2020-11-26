@@ -139,13 +139,7 @@ class OrderController extends Controller
 
         $id = $request->id;
 
-        $data = array();
-        $data['meta_title'] = $request->meta_title;
-        $data['meta_author'] = $request->meta_author;
-        $data['meta_tag'] = $request->meta_tag;
-        $data['meta_description'] = $request->meta_description;
-        $data['google_analytics'] = $request->google_analytics;
-        $data['bing_analytics'] = $request->bing_analytics;
+        $data = $request->except(["_token"]);
         DB::table('seo')->where('id', $id)->Update($data);
         $notification = array(
             'messege' => 'Seo Updated Successfully',
