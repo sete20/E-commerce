@@ -195,9 +195,9 @@
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Create User</a></li>
-           <li class="nav-item"><a href="" class="nav-link">All User </a></li>
+         <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('create.admin') }}" class="nav-link">Create User</a></li>
+           <li class="nav-item"><a href="{{ route('admin.all.user') }}" class="nav-link">All User </a></li>
 
         </ul>
 
@@ -222,8 +222,8 @@
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Stock</a></li>
+           <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('admin.product.stock') }}" class="nav-link">Stock</a></li>
 
 
         </ul>
