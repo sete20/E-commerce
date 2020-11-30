@@ -184,3 +184,18 @@ Route::get('edit/admin/{id}', 'Admin\UserRoleController@UserEdit');
 Route::post('admin/update/admin', 'Admin\UserRoleController@UserUpdate')->name('update.admin');
 // Order Stock Route
 Route::get('admin/product/stock', 'Admin\UserRoleController@ProductStock')->name('admin.product.stock');
+// Admin Site Setting Route
+Route::get('admin/site/setting', 'Admin\SettingController@SiteSetting')->name('admin.site.setting');
+
+Route::post('admin/sitesetting', 'Admin\SettingController@UpdateSiteSetting')->name('update.sitesetting');
+// Return Order Route
+
+
+Route::get('success/list/', 'PaymentController@SuccessList')->name('success.orderlist');
+
+Route::get('request/return/{id}', 'PaymentController@RequestReturn');
+
+Route::get('admin/return/request/', 'Admin\ReturnController@ReturnRequest')->name('admin.return.request');
+
+Route::get('admin/approve/return/{id}', 'Admin\ReturnController@ApproveReturn');
+Route::get('admin/all/return/', 'Admin\ReturnController@AllReturn')->name('admin.all.return');

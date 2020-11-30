@@ -1,4 +1,7 @@
+ @php
+$setting = DB::table('site_settings')->first();
 
+ @endphp
 
 
  <!DOCTYPE html>
@@ -21,7 +24,7 @@
 <!-- chart -->
          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-         {{--  <link rel="stylesheet" href="sweetalert2.min.css">  --}}
+         <link rel="stylesheet" href="sweetalert2.min.css">
 
      <script src="https://js.stripe.com/v3/"></script>
 
@@ -39,12 +42,12 @@
 
         <!-- Top Bar -->
 
-             <div class="top_bar">
+        <div class="top_bar">
             <div class="container">
                 <div class="row">
                     <div class="flex-row col d-flex">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/phone.png')}}" alt=""></div></div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com"></a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/phone.png')}}" alt=""></div>{{ $setting->phone_one }}</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">{{ $setting->email }}</a></div>
                         <div class="ml-auto top_bar_content">
 
 
@@ -80,7 +83,7 @@
                                 @if(Session()->get('lang') == 'arabic' )
                                  <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
                                 @else
-                                 <a href="{{ route('language.arabic') }}">Arabic<i class="fas fa-chevron-down"></i></a>
+                                 <a href="{{ route('language.arabic') }}">arabic<i class="fas fa-chevron-down"></i></a>
                                 @endif
 
 
@@ -116,7 +119,6 @@
             </div>
         </div>
 
-
         <!-- Header Main -->
 
         <div class="header_main">
@@ -139,7 +141,7 @@
                         <div class="header_search">
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
-                <form  method="post" action="" class="clearfix header_search_form">
+                <form  method="post" action="#" class="clearfix header_search_form">
                     @csrf
    <input type="search" required="required" class="header_search_input" placeholder="Search for products..." name="search">
                     <div class="custom_dropdown">
@@ -177,7 +179,7 @@
 
                                 <div class="wishlist_icon"><img src="{{ asset('/frontend/images/heart.png')}}" alt=""></div>
                                 <div class="wishlist_content">
-                                    <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
+                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
                                     <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>
@@ -192,8 +194,7 @@
                                         <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                                     </div>
                                     <div class="cart_content">
-                                                                               <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
-
+                                        <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
                                         <div class="cart_price">${{ Cart::subtotal() }}</div>
                                     </div>
                                 </div>
@@ -211,7 +212,10 @@
 
 @yield('content')
     <!-- Footer -->
+ @php
+$setting = DB::table('site_settings')->first();
 
+ @endphp
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -219,19 +223,19 @@
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#"></a></div>
+                            <div class="logo"><a href="#">{{ $setting->company_name }}</a></div>
                         </div>
                         <div class="footer_title">Got Question? Call Us 24/7</div>
-                        <div class="footer_phone"></div>
+                        <div class="footer_phone">{{ $setting->phone_two }}</div>
                         <div class="footer_contact_text">
-                            <p></p>
+                            <p>{{ $setting->company_address }}</p>
                         </div>
                         <div class="footer_social">
                             <ul>
-                                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="}"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href=""><i class="fab fa-google"></i></a></li>
+                                <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ $setting->youtube }}"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="{{ $setting->instagram }}"><i class="fab fa-google"></i></a></li>
 
                             </ul>
                         </div>
@@ -359,6 +363,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('/frontend/plugins/greensock/TimelineMax.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/greensock/animation.gsap.min.js')}}"></script>
+<script src="{{ asset('/frontend/plugins/greensock/ScrollToPlugin.min.jsplugins/greensock/ScrollToPlugin.min.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{ asset('/frontend/plugins/easing/easing.js')}}"></script>
