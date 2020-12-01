@@ -46,8 +46,8 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">$ {{ $today }}</h3>
               </div><!-- card-body -->
-               
-              
+
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
@@ -60,7 +60,7 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">$ {{ $month }}</h3>
               </div><!-- card-body -->
-              
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
@@ -73,8 +73,8 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">$ {{ $year }}</h3>
               </div><!-- card-body -->
-             
-              
+
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
@@ -87,7 +87,7 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">$ {{ $delevery }} </h3>
               </div><!-- card-body -->
-             
+
             </div><!-- card -->
           </div><!-- col-3 -->
         </div><!-- row -->
@@ -107,8 +107,8 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">$ {{ $return }}</h3>
               </div><!-- card-body -->
-               
-              
+
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
@@ -121,7 +121,7 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">  {{ count($product)  }}</h3>
               </div><!-- card-body -->
-              
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
@@ -134,8 +134,8 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">  {{ count($brand)  }}</h3>
               </div><!-- card-body -->
-             
-              
+
+
             </div><!-- card -->
           </div><!-- col-3 -->
           <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
@@ -148,7 +148,7 @@ $user = DB::table('users')->get();
                 <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
                 <h3 class="mg-b-0 tx-white tx-lato tx-bold">  {{ count($user)  }} </h3>
               </div><!-- card-body -->
-             
+
             </div><!-- card -->
           </div><!-- col-3 -->
         </div><!-- row -->
@@ -156,7 +156,7 @@ $user = DB::table('users')->get();
 
 
 
-  
+
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 @endsection

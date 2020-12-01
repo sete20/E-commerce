@@ -201,7 +201,7 @@
 
         </ul>
 
-        <a href="#" class="sl-menu-link">
+          <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
             <span class="menu-item-label">Return Order</span>
@@ -209,20 +209,18 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Return Request</a></li>
-           <li class="nav-item"><a href="" class="nav-link">All Request </a></li>
+          <li class="nav-item"><a href="{{ route('admin.return.request') }}" class="nav-link">Return Request</a></li>
+           <li class="nav-item"><a href="{{ route('admin.all.return') }}" class="nav-link">All Request </a></li>
 
         </ul>
-
-
-         <a href="#" class="sl-menu-link">
+ <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
             <span class="menu-item-label">Product Stocks</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-           <ul class="sl-menu-sub nav flex-column">
+        <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('admin.product.stock') }}" class="nav-link">Stock</a></li>
 
 
@@ -242,7 +240,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
 
-           <li class="nav-item"><a href="" class="nav-link">All Message </a></li>
+           <li class="nav-item"><a href="{{ route('all.message') }}" class="nav-link">All Message </a></li>
 
         </ul>
 
@@ -259,8 +257,7 @@
            <li class="nav-item"><a href=" " class="nav-link">All Comments </a></li>
 
         </ul>
-
-          <a href="#" class="sl-menu-link">
+  <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
             <span class="menu-item-label">Site Setting  </span>
@@ -268,7 +265,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="" class="nav-link">Site Setting</a></li>
+          <li class="nav-item"><a href="{{ route('admin.site.setting') }}" class="nav-link">Site Setting</a></li>
 
 
         </ul>

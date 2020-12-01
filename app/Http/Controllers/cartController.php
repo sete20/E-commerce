@@ -197,4 +197,16 @@ class cartController extends Controller
         // return response()->json($product);
         return view('pages.wishlist', compact('product'));
     }
+
+
+    public function Search(Request $request)
+    {
+        $item = $request->search;
+        $products = DB::table('products')
+            ->where('product_name', 'LIKE', "%$item%")
+            ->paginate(20);
+        // dd($products);
+
+        return view('pages.search', compact('products'));
+    }
 }

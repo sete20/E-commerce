@@ -199,3 +199,18 @@ Route::get('admin/return/request/', 'Admin\ReturnController@ReturnRequest')->nam
 
 Route::get('admin/approve/return/{id}', 'Admin\ReturnController@ApproveReturn');
 Route::get('admin/all/return/', 'Admin\ReturnController@AllReturn')->name('admin.all.return');
+
+// Order Stock Route
+Route::get('admin/product/stock', 'Admin\UserRoleController@ProductStock')->name('admin.product.stock');
+/// Contact page Routes
+
+Route::get('contact/page', 'ContactController@Contact')->name('contact.page');
+Route::post('contact/form', 'ContactController@ContactForm')->name('contact.form');
+
+Route::get('admin/all/message', 'ContactController@AllMessage')->name('all.message');
+
+// Search Route
+Route::post('product/search', 'CartController@Search')->name('product.search');
+// Socialite Route
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');

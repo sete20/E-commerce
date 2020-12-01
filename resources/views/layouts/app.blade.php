@@ -136,12 +136,12 @@ $setting = DB::table('site_settings')->first();
    @php
   $category = DB::table('categories')->get();
    @endphp
-                    <!-- Search -->
+                 <!-- Search -->
                     <div class="order-3 text-right col-lg-6 col-12 order-lg-2 text-lg-left">
                         <div class="header_search">
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
-                <form  method="post" action="#" class="clearfix header_search_form">
+                <form  method="post" action="{{ route('product.search') }}" class="clearfix header_search_form">
                     @csrf
    <input type="search" required="required" class="header_search_input" placeholder="Search for products..." name="search">
                     <div class="custom_dropdown">
